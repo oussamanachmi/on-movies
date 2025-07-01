@@ -1,0 +1,362 @@
+[
+    {
+        "id": 1,
+        "title": "Inception",
+        "genre": [
+            "Action",
+            "Sci-Fi"
+        ],
+        "releaseYear": 2010,
+        "director": "Christopher Nolan",
+        "rating": 8.8,
+        "duration": 148,
+        "language": "English",
+        "poster": "https://example.com/posters/inception.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Parasite",
+        "genre": [
+            "Thriller",
+            "Drama"
+        ],
+        "releaseYear": 2019,
+        "director": "Bong Joon-ho",
+        "rating": 8.6,
+        "duration": 132,
+        "language": "Korean",
+        "poster": "https://example.com/posters/parasite.jpg"
+    },
+    {
+        "id": 3,
+        "title": "The Dark Knight",
+        "genre": [
+            "Action",
+            "Crime",
+            "Drama"
+        ],
+        "releaseYear": 2008,
+        "director": "Christopher Nolan",
+        "rating": 9.0,
+        "duration": 152,
+        "language": "English",
+        "poster": "https://example.com/posters/dark-knight.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Interstellar",
+        "genre": [
+            "Adventure",
+            "Drama",
+            "Sci-Fi"
+        ],
+        "releaseYear": 2014,
+        "director": "Christopher Nolan",
+        "rating": 8.6,
+        "duration": 169,
+        "language": "English",
+        "poster": "https://example.com/posters/interstellar.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Gladiator",
+        "genre": [
+            "Action",
+            "Drama"
+        ],
+        "releaseYear": 2000,
+        "director": "Ridley Scott",
+        "rating": 8.5,
+        "duration": 155,
+        "language": "English",
+        "poster": "https://example.com/posters/gladiator.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Amélie",
+        "genre": [
+            "Comedy",
+            "Romance"
+        ],
+        "releaseYear": 2001,
+        "director": "Jean-Pierre Jeunet",
+        "rating": 8.3,
+        "duration": 122,
+        "language": "French",
+        "poster": "https://example.com/posters/amelie.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Spirited Away",
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Family"
+        ],
+        "releaseYear": 2001,
+        "director": "Hayao Miyazaki",
+        "rating": 8.6,
+        "duration": 125,
+        "language": "Japanese",
+        "poster": "https://example.com/posters/spirited-away.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Fight Club",
+        "genre": [
+            "Drama"
+        ],
+        "releaseYear": 1999,
+        "director": "David Fincher",
+        "rating": 8.8,
+        "duration": 139,
+        "language": "English",
+        "poster": "https://example.com/posters/fight-club.jpg"
+    },
+    {
+        "id": 9,
+        "title": "The Matrix",
+        "genre": [
+            "Action",
+            "Sci-Fi"
+        ],
+        "releaseYear": 1999,
+        "director": "Lana Wachowski, Lilly Wachowski",
+        "rating": 8.7,
+        "duration": 136,
+        "language": "English",
+        "poster": "https://example.com/posters/matrix.jpg"
+    },
+    {
+        "id": 10,
+        "title": "La La Land",
+        "genre": [
+            "Comedy",
+            "Drama",
+            "Music"
+        ],
+        "releaseYear": 2016,
+        "director": "Damien Chazelle",
+        "rating": 8.0,
+        "duration": 128,
+        "language": "English",
+        "poster": "https://example.com/posters/la-la-land.jpg"
+    },
+    {
+        "id": 11,
+        "title": "The Godfather",
+        "genre": [
+            "Crime",
+            "Drama"
+        ],
+        "releaseYear": 1972,
+        "director": "Francis Ford Coppola",
+        "rating": 9.2,
+        "duration": 175,
+        "language": "English",
+        "poster": "https://example.com/posters/godfather.jpg"
+    },
+    {
+        "id": 12,
+        "title": "The Shawshank Redemption",
+        "genre": [
+            "Drama"
+        ],
+        "releaseYear": 1994,
+        "director": "Frank Darabont",
+        "rating": 9.3,
+        "duration": 142,
+        "language": "English",
+        "poster": "https://example.com/posters/shawshank.jpg"
+    },
+    {
+        "id": 13,
+        "title": "Pulp Fiction",
+        "genre": [
+            "Crime",
+            "Drama"
+        ],
+        "releaseYear": 1994,
+        "director": "Quentin Tarantino",
+        "rating": 8.9,
+        "duration": 154,
+        "language": "English",
+        "poster": "https://example.com/posters/pulp-fiction.jpg"
+    },
+    {
+        "id": 14,
+        "title": "Forrest Gump",
+        "genre": [
+            "Drama",
+            "Romance"
+        ],
+        "releaseYear": 1994,
+        "director": "Robert Zemeckis",
+        "rating": 8.8,
+        "duration": 142,
+        "language": "English",
+        "poster": "https://example.com/posters/forrest-gump.jpg"
+    },
+    {
+        "id": 15,
+        "title": "City of God",
+        "genre": [
+            "Crime",
+            "Drama"
+        ],
+        "releaseYear": 2002,
+        "director": "Fernando Meirelles",
+        "rating": 8.6,
+        "duration": 130,
+        "language": "Portuguese",
+        "poster": "https://example.com/posters/city-of-god.jpg"
+    },
+    {
+        "id": 16,
+        "title": "The Pianist",
+        "genre": [
+            "Biography",
+            "Drama",
+            "Music"
+        ],
+        "releaseYear": 2002,
+        "director": "Roman Polanski",
+        "rating": 8.5,
+        "duration": 150,
+        "language": "English",
+        "poster": "https://example.com/posters/pianist.jpg"
+    },
+    {
+        "id": 17,
+        "title": "The Intouchables",
+        "genre": [
+            "Biography",
+            "Comedy",
+            "Drama"
+        ],
+        "releaseYear": 2011,
+        "director": "Olivier Nakache, Éric Toledano",
+        "rating": 8.5,
+        "duration": 112,
+        "language": "French",
+        "poster": "https://example.com/posters/intouchables.jpg"
+    },
+    {
+        "id": 18,
+        "title": "Coco",
+        "genre": [
+            "Animation",
+            "Adventure",
+            "Family"
+        ],
+        "releaseYear": 2017,
+        "director": "Lee Unkrich",
+        "rating": 8.4,
+        "duration": 105,
+        "language": "English",
+        "poster": "https://example.com/posters/coco.jpg"
+    },
+    {
+        "id": 19,
+        "title": "Whiplash",
+        "genre": [
+            "Drama",
+            "Music"
+        ],
+        "releaseYear": 2014,
+        "director": "Damien Chazelle",
+        "rating": 8.5,
+        "duration": 106,
+        "language": "English",
+        "poster": "https://example.com/posters/whiplash.jpg"
+    },
+    {
+        "id": 20,
+        "title": "The Social Network",
+        "genre": [
+            "Biography",
+            "Drama"
+        ],
+        "releaseYear": 2010,
+        "director": "David Fincher",
+        "rating": 7.7,
+        "duration": 120,
+        "language": "English",
+        "poster": "https://example.com/posters/social-network.jpg"
+    },
+    {
+        "id": 21,
+        "title": "Joker",
+        "genre": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "releaseYear": 2019,
+        "director": "Todd Phillips",
+        "rating": 8.4,
+        "duration": 122,
+        "language": "English",
+        "poster": "https://example.com/posters/joker.jpg"
+    },
+    {
+        "id": 22,
+        "title": "Her",
+        "genre": [
+            "Drama",
+            "Romance",
+            "Sci-Fi"
+        ],
+        "releaseYear": 2013,
+        "director": "Spike Jonze",
+        "rating": 8.0,
+        "duration": 126,
+        "language": "English",
+        "poster": "https://example.com/posters/her.jpg"
+    },
+    {
+        "id": 23,
+        "title": "Arrival",
+        "genre": [
+            "Drama",
+            "Mystery",
+            "Sci-Fi"
+        ],
+        "releaseYear": 2016,
+        "director": "Denis Villeneuve",
+        "rating": 7.9,
+        "duration": 116,
+        "language": "English",
+        "poster": "https://example.com/posters/arrival.jpg"
+    },
+    {
+        "id": 24,
+        "title": "The Grand Budapest Hotel",
+        "genre": [
+            "Adventure",
+            "Comedy",
+            "Crime"
+        ],
+        "releaseYear": 2014,
+        "director": "Wes Anderson",
+        "rating": 8.1,
+        "duration": 99,
+        "language": "English",
+        "poster": "https://example.com/posters/grand-budapest.jpg"
+    },
+    {
+        "id": 25,
+        "title": "Dune",
+        "genre": [
+            "Action",
+            "Adventure",
+            "Drama"
+        ],
+        "releaseYear": 2021,
+        "director": "Denis Villeneuve",
+        "rating": 8.0,
+        "duration": 155,
+        "language": "English",
+        "poster": "https://example.com/posters/dune.jpg"
+    }
+]
