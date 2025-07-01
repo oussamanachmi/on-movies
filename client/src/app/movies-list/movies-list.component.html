@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Duration (min)</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (movie of movies; track movie.id) {
+            <tr>
+                <td>
+                    <img [src]="movie.poster" alt="{{movie.title}}" width="60" height="90" />
+                </td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.genre.join(', ') }}</td>
+                <td>{{ movie.releaseYear }}</td>
+                <td>{{ movie.director }}</td>
+                <td>{{ movie.rating }}</td>
+                <td>{{ movie.duration }}</td>
+                <td>{{ movie.language }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
