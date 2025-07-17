@@ -1,0 +1,22 @@
+.navbar {
+    height: 65px;
+    background-color: #212121;
+    padding: 0 47px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+
+    .navbar-brand {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}
+
+.navbar-toggler {
+    border: none;
+    color: #fff;
+
+    &:focus {
+        outline: none;
+    }
+}

@@ -8,5 +8,5 @@ export const routes: Routes = [
         loadComponent: () => import('./movies-list/movies-list.component').then(m => m.MoviesListComponent)
     },
     // { path: '404', loadComponent: () => import('./core/components/not-found/not-found.component').then(m => m.NotFoundComponent) },
-    { path: '**', redirectTo: '404' },
+    // { path: '**', redirectTo: '404' },
 ];
