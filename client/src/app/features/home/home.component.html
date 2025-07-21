@@ -1,70 +1,84 @@
 <section class="home-page">
     <div class="home-banner">
         <img src="assets/banner.jpg" alt="Bannière films" class="banner-img" />
-        <div class="banner-text">
-            Découvrez les meilleurs films du moment
-        </div>
+        <div class="banner-text">Découvrez les meilleurs films du moment</div>
     </div>
+
     <div class="container mt-5">
-        <!-- Top Rated -->
+        <!-- Filter Controls -->
         <div class="d-flex justify-content-between align-items-center mb-5">
-            <h2 class="section-title text-white">Mieux notés</h2>
+            <h2 class="section-title text-white">Films</h2>
             <div class="movies-filter text-white">
-                <span class="pointer">Populaire</span>
-                <span class="px-3 pointer">Nouveautés</span>
-                <span class="pointer">A venir</span>
+                <span class="pointer" [class.text-warning]="selectedFilter === 'populaire'"
+                    (click)="onSelectFilter('populaire')">Populaire</span>
+                <span class="px-3 pointer" [class.text-warning]="selectedFilter === 'nouveautes'"
+                    (click)="onSelectFilter('nouveautes')">Nouveautés</span>
+                <span class="pointer" [class.text-warning]="selectedFilter === 'avenir'"
+                    (click)="onSelectFilter('avenir')">À venir</span>
             </div>
-
         </div>
+
+        <!-- Carousel -->
         <div class="row">
             <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
                 [showIndicators]="false" [isAnimated]="true">
-
-                @for (topRatedMovie of topRatedMovies; let i = $index; track topRatedMovie) {
+                @for ( movie of filteredMovies; track movie) {
                 <slide>
-                    <div class="poster__rating">⭐ {{topRatedMovie.imdb.rating}} /10</div>
-                    <div class="overlay">
-                        <div class="hover"></div>
-                    </div>
-                    <img [src]="topRatedMovie.poster || 'assets/no-image.png'" loading="lazy"
-                        (error)="handleImgError($event)" alt="image slide" class="poster pointer" />
-                    <div class="poster__date">{{topRatedMovie.year}}</div>
-                    <div class="poster__overlay">
-                        <div class="poster__title text-white text-truncate mt-3 mb-5">{{topRatedMovie.title}}</div>
-                    </div>
-                </slide>
-                }
-
-            </carousel>
-        </div>
-        <!-- Recently Released -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="section-title text-white">Récemment publiés</h2>
-        </div>
-        <div class="row">
-            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
-                [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
-                [showIndicators]="false" [isAnimated]="true">
-
-                @for (recentlyMovie of recentlyMovies; let i = $index; track recentlyMovie) {
-                <slide>
-                    @if(recentlyMovie.imdb?.rating) {
-                    <div class="poster__rating">⭐ {{recentlyMovie.imdb.rating}} /10</div>
+                    @if (movie.imdb.rating) {
+                    <div class="poster__rating">⭐ {{ movie.imdb.rating }} /10</div>
                     }
                     <div class="overlay">
                         <div class="hover"></div>
                     </div>
-                    <img [src]="recentlyMovie.poster || 'assets/no-image.png'" loading="lazy"
-                        (error)="handleImgError($event)" alt="image slide" class="poster pointer" />
-                    <div class="poster__date">{{recentlyMovie.year}}</div>
+                    <img [src]="movie.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                        class="poster pointer" loading="lazy" />
+                    <div class="poster__date">{{ movie.year }}</div>
                     <div class="poster__overlay">
-                        <div class="poster__title text-white text-truncate mt-3 mb-5">{{recentlyMovie.title}}</div>
+                        <div class="poster__title text-white text-truncate mt-3 mb-5">
+                            {{ movie.title }}
+                        </div>
                     </div>
                 </slide>
                 }
-
             </carousel>
+
+            @if (filteredMovies.length === 0) {
+            <h5 class="text-white text-center mt-3">
+                Aucun film trouvé pour le filtre sélectionné.
+            </h5>
+            }
+        </div>
+
+        <!-- Thriller Movies Section -->
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+            <h2 class="section-title text-white">Films Fantasy</h2>
+        </div>
+
+        <div class="row">
+            <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
+                [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
+                [showIndicators]="false" [isAnimated]="true">
+                @for (fantasy of fantasyMovies; let i = $index; track fantasy) {
+                <slide>
+                    @if (fantasy.imdb.rating) {
+                    <div class="poster__rating">⭐ {{ fantasy.imdb.rating }} /10</div>
+                    }
+                    <div class="overlay">
+                        <div class="hover"></div>
+                    </div>
+                    <img [src]="fantasy.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                        class="poster pointer" loading="lazy" />
+                    <div class="poster__date">{{ fantasy.year }}</div>
+                    <div class="poster__overlay">
+                        <div class="poster__title text-white text-truncate mt-3 mb-5">
+                            {{ fantasy.title }}
+                        </div>
+                    </div>
+                </slide>
+                }
+            </carousel>
+
         </div>
     </div>
 </section>

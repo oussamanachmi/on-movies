@@ -2,55 +2,83 @@ import { Component } from '@angular/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { MoviesService } from '../../core/services/movies.service';
 import { Movie } from '../../core/models/movies.model';
-
+import { setTheme } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-home',
-  imports: [CarouselModule],
+  standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  standalone: true,
+  imports: [CarouselModule],
 })
 export class HomeComponent {
   itemsPerSlide = 6.5;
   singleSlideOffset = true;
   noWrap = false;
-  topRatedMovies: Movie[] = [];
-  recentlyMovies: Movie[] = [];
 
-  constructor(private moviesService: MoviesService) { }
+  allMovies: Movie[] = [];
+  filteredMovies: Movie[] = [];
+  fantasyMovies: Movie[] = [];
+  selectedFilter: 'populaire' | 'nouveautes' | 'avenir' = 'populaire';
+
+  constructor(private moviesService: MoviesService) {
+    setTheme('bs5');
+  }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.getMovies();
   }
 
-  onSlideRangeChange(indexes: number[] | void): void {
-    // console.log(`Slides have been switched: ${indexes}`);
+  trackMovie(index: number, movie: Movie): any {
+    return movie._id || movie.title;
   }
 
   getMovies(): void {
     this.moviesService.getMoviesFromApi().subscribe({
       next: (movies) => {
-        this.topRatedMovies = movies.filter(movie => movie?.imdb?.rating != null)
-          .sort((a, b) => b.imdb.rating - a.imdb.rating)
-          .slice(0, 20);
+        this.allMovies = movies;
 
-        this.recentlyMovies = movies
-          .filter(movie => movie?.year)
-          .sort((a, b) => +b.year - +a.year)
-          .slice(0, 20);
-        console.log('Movies fetched successfully:', this.topRatedMovies);
+
+        this.fantasyMovies = movies
+          .filter((movie) => movie.genres?.includes('Fantasy'));
+
+        this.applyFilter();
       },
       error: (error) => {
-        console.error('Error fetching movies:', error);
-      }
+        console.error('Erreur lors du chargement des films', error);
+      },
     });
+  }
+
+  applyFilter(): void {
+    const nowYear = new Date().getFullYear();
+
+    if (this.selectedFilter === 'populaire') {
+      this.filteredMovies = this.allMovies
+        .filter((m) => m.imdb.rating)
+        .sort((a, b) => b.imdb.rating - a.imdb.rating);
+    } else if (this.selectedFilter === 'nouveautes') {
+      this.filteredMovies = this.allMovies
+        .filter((m) => m.year)
+        .sort((a, b) => +b.year - +a.year);
+    } else if (this.selectedFilter === 'avenir') {
+      this.filteredMovies = this.allMovies
+        .filter((m) => +m.year > nowYear)
+        .sort((a, b) => +a.year - +b.year);
+    }
+    console.log(`Filter applied: ${this.selectedFilter}`, this.filteredMovies);
+
+  }
+
+  onSelectFilter(filter: 'populaire' | 'nouveautes' | 'avenir') {
+    this.selectedFilter = filter;
+    this.applyFilter();
   }
 
   handleImgError(event: Event): void {
     const target = event.target as HTMLImageElement;
     target.src = 'assets/no-image.png';
   }
+
+  onSlideRangeChange(indexes: number[] | void): void { }
 }
