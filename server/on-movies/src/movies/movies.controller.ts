@@ -15,8 +15,9 @@ export class MoviesController {
     }
 
     @Get()
-    findAll() {
-        return this.moviesService.findAll();
+    async findAll() {
+        const movies = await this.moviesService.findAll();
+        return movies.slice(0, 20);
     }
 
     @Get(':id')
