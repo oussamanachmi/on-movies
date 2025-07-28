@@ -24,7 +24,7 @@
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
                 [showIndicators]="false" [isAnimated]="true">
                 @for ( movie of filteredMovies; track movie) {
-                <slide>
+                <slide [routerLink]="['/movies/' + movie._id]" routerLinkActive="router-link-active">
                     @if (movie.imdb.rating) {
                     <div class="poster__rating">⭐ {{ movie.imdb.rating }} /10</div>
                     }
@@ -60,7 +60,7 @@
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
                 [showIndicators]="false" [isAnimated]="true">
                 @for (fantasy of fantasyMovies; let i = $index; track fantasy) {
-                <slide>
+                <slide [routerLink]="['/movies/' + fantasy._id]" routerLinkActive="router-link-active">
                     @if (fantasy.imdb.rating) {
                     <div class="poster__rating">⭐ {{ fantasy.imdb.rating }} /10</div>
                     }

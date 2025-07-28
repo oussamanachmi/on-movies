@@ -8,7 +8,7 @@ export interface Movie {
     released: Date;
     year: number;
     type: string;
-
+    imageUrl: string;
     poster: string;
 
     cast: string[];

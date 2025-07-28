@@ -1,9 +1,9 @@
 .navbar {
     height: 65px;
     background-color: transparent;
-    padding: 0 47px;
+    // padding: 0 47px;
     margin: 0 auto;
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    // border-bottom: 1px solid rgba(255, 255, 255, .1);
     z-index: 9;
 
     .navbar-brand {
@@ -21,3 +21,55 @@
         outline: none;
     }
 }
+
+// .home-page {
+//     .navbar {
+//         height: 65px;
+//         background-color: transparent;
+//         padding: 0 47px;
+//         margin: 0 auto;
+//         border-bottom: 1px solid rgba(255, 255, 255, .1);
+//         z-index: 9;
+
+//         .navbar-brand {
+//             color: #fff;
+//             font-size: 1.5rem;
+//             font-weight: bold;
+//         }
+//     }
+
+//     .navbar-toggler {
+//         border: none;
+//         color: #fff;
+
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+// }
+
+// .not-home {
+//     .navbar {
+//         height: 65px;
+//         background-color: black;
+//         padding: 0 47px;
+//         margin: 0 auto;
+//         border-bottom: 1px solid rgba(255, 255, 255, .1);
+//         z-index: 9;
+
+//         .navbar-brand {
+//             color: #fff;
+//             font-size: 1.5rem;
+//             font-weight: bold;
+//         }
+//     }
+
+//     .navbar-toggler {
+//         border: none;
+//         color: #fff;
+
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+// }

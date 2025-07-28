@@ -1,0 +1,76 @@
+<section class="movie-detail-container">
+    <section class="movie-detail" [ngStyle]="{'background-image': 'url(assets/movie-bg.jpg)'}">
+        <div class="movie-detail-content movie-banner text-white py-5">
+            <div class="container">
+                <div class="row gx-4 align-items-start">
+                    <!-- Poster -->
+                    <div class="col-md-4 col-lg-3 text-center mb-4 mb-md-0">
+
+                        <img [src]="movieDetail[0].poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                            alt="The Demon's Bride Poster" class="img-fluid rounded shadow" loading="lazy" />
+
+                    </div>
+
+                    <!-- Details -->
+                    <div class="col-md-8 col-lg-9">
+                        <h2 class="fw-bold mb-2">
+                            {{movieDetail[0].title}} <span class="fs-4 text-white">({{movieDetail[0].year}})</span>
+                        </h2>
+                        <p class="fst-italic text-light mb-4">
+                            {{movieDetail[0].plot}}...
+                        </p>
+
+                        <h5>Overview</h5>
+                        <p class="text-light">
+                            {{movieDetail[0].fullplot}}
+                        </p>
+
+                        <button class="btn btn-play btn-xs my-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-play-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+                            </svg>
+                            <span class="text-white">Play Trailer</span>
+                        </button>
+
+                        <div class="categories">
+                            <span class="fw-bold text-white me-2">Categories</span>
+                            @for (genre of movieDetail[0].genres; track genre) {
+                            <span class="badge m-2">{{genre}}</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="recommented-content">
+        <!-- Recommended Movies Section -->
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title text-white">Recommended Movies</h2>
+            </div>
+
+            <div class="row">
+                @for (movie of recommendedMovies; track movie) {
+                <div class="col-2 position-relative">
+                    @if (movie.imdb.rating) {
+                    <div class="poster__rating">⭐ {{ movie.imdb.rating }} /10</div>
+                    }
+                    <img [src]="movie.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                        class="poster pointer" loading="lazy" />
+                    <div class="poster__date">{{ movie.year }}</div>
+                    <div class="poster__overlay">
+                        <div class="poster__title text-white text-truncate mt-3 mb-5">
+                            {{ movie.title }}
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+</section>

@@ -3,13 +3,14 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { MoviesService } from '../../core/services/movies.service';
 import { Movie } from '../../core/models/movies.model';
 import { setTheme } from 'ngx-bootstrap/utils';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [CarouselModule],
+  imports: [CarouselModule, RouterModule],
 })
 export class HomeComponent {
   itemsPerSlide = 6.5;
@@ -34,7 +35,7 @@ export class HomeComponent {
   }
 
   getMovies(): void {
-    this.moviesService.getMoviesFromApi().subscribe({
+    this.moviesService.getMovies().subscribe({
       next: (movies) => {
         this.allMovies = movies;
 
@@ -66,8 +67,6 @@ export class HomeComponent {
         .filter((m) => +m.year > nowYear)
         .sort((a, b) => +a.year - +b.year);
     }
-    console.log(`Filter applied: ${this.selectedFilter}`, this.filteredMovies);
-
   }
 
   onSelectFilter(filter: 'populaire' | 'nouveautes' | 'avenir') {
