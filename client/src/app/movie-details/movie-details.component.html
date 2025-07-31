@@ -20,10 +20,12 @@
                             {{movieDetail[0].plot}}...
                         </p>
 
+                        @if (movieDetail[0].fullplot) {
                         <h5>Overview</h5>
                         <p class="text-light">
                             {{movieDetail[0].fullplot}}
                         </p>
+                        }
 
                         <button class="btn btn-play btn-xs my-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -50,13 +52,14 @@
     <section class="recommented-content">
         <!-- Recommended Movies Section -->
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
                 <h2 class="section-title text-white">Recommended Movies</h2>
             </div>
 
             <div class="row">
+                <!-- Here -->
                 @for (movie of recommendedMovies; track movie) {
-                <div class="col-2 position-relative">
+                <div class="col-2 position-relative" (click)="goToMovie(movie._id)">
                     @if (movie.imdb.rating) {
                     <div class="poster__rating">⭐ {{ movie.imdb.rating }} /10</div>
                     }

@@ -21,7 +21,6 @@ export class AppComponent {
         if (event.urlAfterRedirects === '/') {
           this.renderer.addClass(document.body, 'home-page');
           this.renderer.removeClass(document.body, 'not-home');
-          console.log(document.body);
         } else {
           this.renderer.addClass(document.body, 'not-home');
           this.renderer.removeClass(document.body, 'home-page');
