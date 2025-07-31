@@ -52,27 +52,27 @@
 
         <!-- Thriller Movies Section -->
         <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
-            <h2 class="section-title text-white">Films Fantasy</h2>
+            <h2 class="section-title text-white">Films Comedy</h2>
         </div>
 
         <div class="row">
             <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
                 [showIndicators]="false" [isAnimated]="true">
-                @for (fantasy of fantasyMovies; let i = $index; track fantasy) {
-                <slide [routerLink]="['/movies/' + fantasy._id]" routerLinkActive="router-link-active">
-                    @if (fantasy.imdb.rating) {
-                    <div class="poster__rating">⭐ {{ fantasy.imdb.rating }} /10</div>
+                @for (comedy of comedyMovies; let i = $index; track comedy) {
+                <slide [routerLink]="['/movies/' + comedy._id]" routerLinkActive="router-link-active">
+                    @if (comedy.imdb.rating) {
+                    <div class="poster__rating">⭐ {{ comedy.imdb.rating }} /10</div>
                     }
                     <div class="overlay">
                         <div class="hover"></div>
                     </div>
-                    <img [src]="fantasy.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                    <img [src]="comedy.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
                         class="poster pointer" loading="lazy" />
-                    <div class="poster__date">{{ fantasy.year }}</div>
+                    <div class="poster__date">{{ comedy.year }}</div>
                     <div class="poster__overlay">
                         <div class="poster__title text-white text-truncate mt-3 mb-5">
-                            {{ fantasy.title }}
+                            {{ comedy.title }}
                         </div>
                     </div>
                 </slide>

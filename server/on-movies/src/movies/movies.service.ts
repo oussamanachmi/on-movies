@@ -46,4 +46,22 @@ export class MoviesService {
             throw new NotFoundException(`Movie with id ${id} not found`);
         }
     }
+
+    // movies.service.ts
+    async findAllPaginated(page: number, limit: number) {
+        const skip = (page - 1) * limit;
+        const [movies, total] = await Promise.all([
+            this.movieModel.find().skip(skip).limit(limit).exec(),
+            this.movieModel.countDocuments(),
+        ]);
+
+        return {
+            data: movies,
+            total,
+            page,
+            limit,
+            totalPages: Math.ceil(total / limit),
+        };
+    }
+
 }

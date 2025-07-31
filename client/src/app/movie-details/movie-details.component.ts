@@ -24,29 +24,29 @@ export class movieDetailsComponent implements OnInit {
       const movieId = params.get('id')!;
       this.getMoviesById(movieId)
     });
-    this.fetchrecommendedMovies();
+    // this.fetchrecommendedMovies();
   }
 
-  fetchrecommendedMovies(): void {
-    this.moviesService.getMovies().subscribe({
-      next: (movies) => {
-        const recommendedGenres = ['Drama', 'Mystery', 'Crime'];
+  // fetchrecommendedMovies(): void {
+  //   this.moviesService.getMovies().subscribe({
+  //     next: (movies) => {
+  //       const recommendedGenres = ['Drama', 'Mystery', 'Crime'];
 
-        this.recommendedMovies = movies.filter((movie) => {
-          return (
-            movie.imdb?.rating >= 7 &&
-            movie.imdb?.votes >= 500
-            // movie.genres?.some((genre) => recommendedGenres.includes(genre))
-          );
-        });
-        console.log(this.recommendedMovies);
+  //       this.recommendedMovies = movies.filter((movie) => {
+  //         return (
+  //           movie.imdb?.rating >= 7 &&
+  //           movie.imdb?.votes >= 500
+  //           // movie.genres?.some((genre) => recommendedGenres.includes(genre))
+  //         );
+  //       });
+  //       console.log(this.recommendedMovies);
 
-      },
-      error: (error) => {
-        console.error('Erreur lors du chargement des films', error);
-      },
-    });
-  }
+  //     },
+  //     error: (error) => {
+  //       console.error('Erreur lors du chargement des films', error);
+  //     },
+  //   });
+  // }
 
 
   getMoviesById(id: string): void {

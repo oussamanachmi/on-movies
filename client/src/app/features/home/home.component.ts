@@ -19,8 +19,11 @@ export class HomeComponent {
 
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
-  fantasyMovies: Movie[] = [];
+  comedyMovies: Movie[] = [];
   selectedFilter: 'populaire' | 'nouveautes' | 'avenir' = 'populaire';
+  currentPage = 1;
+  totalPages = 0;
+  limit = 20;
 
   constructor(private moviesService: MoviesService) {
     setTheme('bs5');
@@ -35,13 +38,13 @@ export class HomeComponent {
   }
 
   getMovies(): void {
-    this.moviesService.getMovies().subscribe({
-      next: (movies) => {
-        this.allMovies = movies;
+    this.moviesService.getMovies(this.currentPage, this.limit).subscribe({
+      next: (response) => {
+        this.allMovies = response.data;
+        this.totalPages = response.totalPages;
 
-
-        this.fantasyMovies = movies
-          .filter((movie) => movie.genres?.includes('Fantasy'));
+        this.comedyMovies = response.data
+          .filter((movie) => movie.genres?.includes('Comedy'));
 
         this.applyFilter();
       },

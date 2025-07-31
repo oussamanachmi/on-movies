@@ -1,6 +1,6 @@
 // movies.controller.ts
 
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Query } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
@@ -15,9 +15,11 @@ export class MoviesController {
     }
 
     @Get()
-    async findAll() {
-        const movies = await this.moviesService.findAll();
-        return movies.slice(0, 20);
+    async findAll(
+        @Query('page') page = 1,
+        @Query('limit') limit = 20,
+    ) {
+        return this.moviesService.findAllPaginated(+page, +limit);
     }
 
     @Get(':id')
