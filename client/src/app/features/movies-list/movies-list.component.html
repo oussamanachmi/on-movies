@@ -6,15 +6,17 @@
             <div class="col-4">
                 <div class="input-group mb-4">
                     <input type="text" class="form-control" placeholder="Search for movies..."
-                        aria-label="Search for movies..." aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2">Go!</span>
+                        aria-label="Search for movies..." aria-describedby="basic-addon2" [(ngModel)]="searchTerm"
+                        (keyup.enter)="filterMovies()">
+                    <span class="input-group-text pointer" id="basic-addon2" (click)="filterMovies()">Go!</span>
                 </div>
             </div>
         </div>
 
         <div class="row movies-list">
             <!-- Here -->
-            @for (movie of allMovies | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalPages };
+            @for (movie of filteredMovies | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems:
+            totalPages };
             track movie) {
             <div class="col-2 position-relative" (click)="goToMovie(movie._id)">
                 @if (movie.imdb.rating) {
@@ -31,6 +33,13 @@
             </div>
             }
         </div>
+        @if (filteredMovies && filteredMovies.length === 0) {
+        <div class="text-center my-5">
+            <img src="assets/no-results.png" alt="No movies found">
+            <h4 class="mt-3 text-white">No movie found</h4>
+            <p class="text-white">Try another keyword or check your spelling.</p>
+        </div>
+        }
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </section>

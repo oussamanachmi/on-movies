@@ -3,17 +3,20 @@ import { Router } from '@angular/router';
 import { MoviesService } from '../../core/services/movies.service';
 import { Movie } from '../../core/models/movies.model';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-movies-list',
-  imports: [NgxPaginationModule],
+  imports: [NgxPaginationModule, FormsModule],
   templateUrl: './movies-list.component.html',
   styleUrl: './movies-list.component.scss',
   standalone: true
 })
 export class MoviesListComponent {
   allMovies: Movie[] = [];
+  filteredMovies: Movie[] = [];
+  searchTerm: string = '';
   currentPage = 1;
   totalPages = 0;
   limit = 24;
@@ -28,11 +31,23 @@ export class MoviesListComponent {
       next: (response) => {
         this.allMovies = response.data;
         this.totalPages = response.totalPages;
+        this.filterMovies();
       },
       error: (error) => {
         console.error('Erreur lors du chargement des films', error);
       },
     });
+  }
+
+  filterMovies(): void {
+    if (!this.searchTerm.trim()) {
+      this.filteredMovies = this.allMovies;
+    } else {
+      const term = this.searchTerm.toLowerCase();
+      this.filteredMovies = this.allMovies.filter(movie =>
+        movie.title.toLowerCase().includes(term)
+      );
+    }
   }
 
   handleImgError(event: Event): void {
