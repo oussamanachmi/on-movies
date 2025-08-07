@@ -1,0 +1,36 @@
+<section class="movies-list-page">
+    <h2>Movies</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" placeholder="Search for movies..."
+                        aria-label="Search for movies..." aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2">Go!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row movies-list">
+            <!-- Here -->
+            @for (movie of allMovies | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalPages };
+            track movie) {
+            <div class="col-2 position-relative" (click)="goToMovie(movie._id)">
+                @if (movie.imdb.rating) {
+                <div class="poster__rating">⭐ {{ movie.imdb.rating }} /10</div>
+                }
+                <img [src]="movie.poster || 'assets/no-image.png'" (error)="handleImgError($event)"
+                    class="poster pointer" loading="lazy" />
+                <div class="poster__date">{{ movie.year }}</div>
+                <div class="poster__overlay">
+                    <div class="poster__title text-white text-truncate mt-3 mb-5">
+                        {{ movie.title }}
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</section>

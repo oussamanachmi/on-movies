@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../core/services/movies.service';
+import { MoviesService } from '../../core/services/movies.service';
 import { ActivatedRoute, Route, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { Movie } from '../core/models/movies.model';
+import { Movie } from '../../core/models/movies.model';
 import { NgStyle } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 

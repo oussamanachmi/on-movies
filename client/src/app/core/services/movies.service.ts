@@ -8,7 +8,7 @@ import { Movie } from '../models/movies.model';
 export class MoviesService {
     constructor(readonly http: HttpClient) { }
 
-    getMovies(page = 1, limit = 20) {
+    getMovies(page: number, limit: number) {
         return this.http.get<{ data: Movie[], total: number, page: number, totalPages: number }>(
             `${environment.moviesApi}?page=${page}&limit=${limit}`
         );
