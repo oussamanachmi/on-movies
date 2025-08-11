@@ -9,7 +9,8 @@ export const routes: Routes = [
     },
     {
         path: 'movies/:id',
-        loadComponent: () => import('./features/movie-details/movie-details.component').then(m => m.movieDetailsComponent)
+        loadComponent: () => import('./features/movie-details/movie-details.component').then(m => m.movieDetailsComponent),
+        data: { renderMode: 'server' } // No prerender
     },
     // { path: '404', loadComponent: () => import('./core/components/not-found/not-found.component').then(m => m.NotFoundComponent) },
     // { path: '**', redirectTo: '404' },
