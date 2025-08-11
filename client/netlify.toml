@@ -1,6 +1,6 @@
 [build]
   publish = "dist/on-movies/browser"
-  command = "yarn build"
+  command = "ng build --configuration production --verbose"
 
 [[redirects]]
   from = "/*"
