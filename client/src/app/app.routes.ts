@@ -21,14 +21,17 @@ export const routes: Routes = [
     // { path: '**', redirectTo: '404' },
 ];
 
+
+export async function getPrerenderParams() {
+    const movies = await fetch('https://on-movies.onrender.com/movies').then(res => res.json());
+    return movies.map((movie: Movie) => ({ id: movie._id }));
+}
+
 export const serverRoutes: ServerRoute[] = [
     {
         path: 'movies/:id',
         renderMode: RenderMode.Prerender,
-        async getPrerenderParams() {
-            const movies = await fetch('https://on-movies.onrender.com/movies').then(res => res.json());
-            return movies.map((movie: Movie) => ({ id: movie._id }));
-        },
+        getPrerenderParams
     },
     {
         path: '**',
