@@ -9,7 +9,7 @@
     "test": "ng test",
     "serve:ssr:on-movies": "node dist/on-movies/server/server.mjs",
     "prepare": "husky install",
-    "postbuild": "cp src/_redirects dist/on-movies/",
+    "postbuild": "cp src/_redirects dist/on-movies/browser",
     "type": "module"
   },
   "private": true,
