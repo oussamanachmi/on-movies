@@ -1,7 +1,7 @@
 <section class="home-page">
     <div class="home-banner">
         <img src="assets/banner.jpg" alt="Bannière films" class="banner-img" />
-        <div class="banner-text">Découvrez les meilleurs films du moment</div>
+        <div class="banner-text">Discover the best films of the moment</div>
     </div>
 
     <div class="container mt-5">
@@ -9,12 +9,12 @@
         <div class="d-flex justify-content-between align-items-center mb-5">
             <h2 class="section-title text-white">Films</h2>
             <div class="movies-filter text-white">
-                <span class="pointer" [class.text-warning]="selectedFilter === 'populaire'"
-                    (click)="onSelectFilter('populaire')">Populaire</span>
-                <span class="px-3 pointer" [class.text-warning]="selectedFilter === 'nouveautes'"
-                    (click)="onSelectFilter('nouveautes')">Nouveautés</span>
-                <span class="pointer" [class.text-warning]="selectedFilter === 'avenir'"
-                    (click)="onSelectFilter('avenir')">À venir</span>
+                <span class="pointer" [class.text-warning]="selectedFilter === 'popular'"
+                    (click)="onSelectFilter('popular')">Popular</span>
+                <span class="px-3 pointer" [class.text-warning]="selectedFilter === 'news'"
+                    (click)="onSelectFilter('news')">News</span>
+                <span class="pointer" [class.text-warning]="selectedFilter === 'upcoming'"
+                    (click)="onSelectFilter('upcoming')">Upcoming</span>
             </div>
         </div>
 

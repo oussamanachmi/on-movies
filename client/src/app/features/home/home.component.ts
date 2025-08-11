@@ -20,7 +20,7 @@ export class HomeComponent {
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
   comedyMovies: Movie[] = [];
-  selectedFilter: 'populaire' | 'nouveautes' | 'avenir' = 'populaire';
+  selectedFilter: 'popular' | 'news' | 'upcoming' = 'popular';
   currentPage = 1;
   totalPages = 0;
   limit = 20;
@@ -57,22 +57,22 @@ export class HomeComponent {
   applyFilter(): void {
     const nowYear = new Date().getFullYear();
 
-    if (this.selectedFilter === 'populaire') {
+    if (this.selectedFilter === 'popular') {
       this.filteredMovies = this.allMovies
         .filter((m) => m.imdb.rating)
         .sort((a, b) => b.imdb.rating - a.imdb.rating);
-    } else if (this.selectedFilter === 'nouveautes') {
+    } else if (this.selectedFilter === 'news') {
       this.filteredMovies = this.allMovies
         .filter((m) => m.year)
         .sort((a, b) => +b.year - +a.year);
-    } else if (this.selectedFilter === 'avenir') {
+    } else if (this.selectedFilter === 'upcoming') {
       this.filteredMovies = this.allMovies
         .filter((m) => +m.year > nowYear)
         .sort((a, b) => +a.year - +b.year);
     }
   }
 
-  onSelectFilter(filter: 'populaire' | 'nouveautes' | 'avenir') {
+  onSelectFilter(filter: 'popular' | 'news' | 'upcoming') {
     this.selectedFilter = filter;
     this.applyFilter();
   }

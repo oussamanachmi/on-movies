@@ -1,6 +1,18 @@
 .movies-list-page {
     background-color: #14203E;
 
+    .search-input {
+        input {
+            border-radius: 0;
+        }
+
+
+        .input-group-text {
+            background: #14203e;
+            color: white;
+            border-radius: 0;
+        }
+    }
 
     .movies-list {
         .poster__rating {

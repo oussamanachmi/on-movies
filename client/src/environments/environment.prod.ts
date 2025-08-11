@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    moviesApi: 'http://localhost:3000/movies'
+    moviesApi: 'https://on-movies.onrender.com/movies'
 };
