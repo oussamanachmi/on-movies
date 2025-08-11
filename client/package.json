@@ -9,6 +9,7 @@
     "test": "ng test",
     "serve:ssr:on-movies": "node dist/on-movies/server/server.mjs",
     "prepare": "husky install",
+    "postinstall": "is-ci || husky install",
     "type": "module"
   },
   "private": true,
