@@ -10,31 +10,11 @@ export const routes: Routes = [
         path: 'movies',
         loadComponent: () => import('./features/movies-list/movies-list.component').then(m => m.MoviesListComponent)
     },
-    // {
-    //     path: 'movies/:id',
-    //     // loadComponent: () => import('./features/movie-details/movie-details.component').then(m => m.movieDetailsComponent),
-    //     component: movieDetailsComponent,
-    //     data: { renderMode: 'server' }  // ou 'client', pour désactiver prerendering
-
-    // },
-    // { path: '404', loadComponent: () => import('./core/components/not-found/not-found.component').then(m => m.NotFoundComponent) },
-    // { path: '**', redirectTo: '404' },
-];
-
-
-export async function getPrerenderParams() {
-    const movies = await fetch('https://on-movies.onrender.com/movies').then(res => res.json());
-    return movies.map((movie: Movie) => ({ id: movie._id }));
-}
-
-export const serverRoutes: ServerRoute[] = [
     {
-        path: 'movies/:id',
-        renderMode: RenderMode.Prerender,
-        getPrerenderParams
+        path: 'movie/:id',
+        loadComponent: () => import('./features/movie-details/movie-details.component').then(m => m.movieDetailsComponent),
+
+
     },
-    {
-        path: '**',
-        renderMode: RenderMode.Prerender
-    }
+    { path: '**', redirectTo: '' },
 ];
