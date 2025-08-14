@@ -31,7 +31,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
               {
                 "glob": "**/*",
                 "input": "public"
@@ -43,12 +43,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -64,6 +59,9 @@
                   "maximumError": "8kB"
                 }
               ],
+              "outputPath": "dist/on-movies/browser",
+              "index": "src/index.html",
+              "server": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
