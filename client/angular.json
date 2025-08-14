@@ -59,9 +59,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputPath": "dist/on-movies/browser",
+              "outputPath": "dist/on-movies",
               "index": "src/index.html",
-              "server": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -69,7 +68,7 @@
                 }
               ],
               "outputHashing": "all",
-              "optimization": {}
+              "optimization": true
             },
             "development": {
               "optimization": false,
