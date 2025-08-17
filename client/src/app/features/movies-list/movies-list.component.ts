@@ -20,6 +20,7 @@ export class MoviesListComponent {
   currentPage = 1;
   totalPages = 0;
   limit = 24;
+  isLoading = true;
 
   constructor(private moviesService: MoviesService, private router: Router) { }
   ngOnInit(): void {
@@ -27,14 +28,17 @@ export class MoviesListComponent {
   }
 
   getMovies(): void {
+    this.isLoading = true;
     this.moviesService.getMovies(this.currentPage, this.limit).subscribe({
       next: (response) => {
         this.allMovies = response.data;
         this.totalPages = response.totalPages;
         this.filterMovies();
+        this.isLoading = false;
       },
       error: (error) => {
         console.error('Erreur lors du chargement des films', error);
+        this.isLoading = false;
       },
     });
   }

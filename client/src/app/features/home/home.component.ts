@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { MoviesService } from '../../core/services/movies.service';
 import { Movie } from '../../core/models/movies.model';
@@ -10,12 +11,13 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [CarouselModule, RouterModule],
+  imports: [CommonModule, CarouselModule, RouterModule],
 })
 export class HomeComponent {
   itemsPerSlide = 6.5;
   singleSlideOffset = true;
   noWrap = false;
+  isLoading = true;
 
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
@@ -38,6 +40,8 @@ export class HomeComponent {
   }
 
   getMovies(): void {
+    this.isLoading = true;
+
     this.moviesService.getMovies(this.currentPage, this.limit).subscribe({
       next: (response) => {
         this.allMovies = response.data;
@@ -47,9 +51,11 @@ export class HomeComponent {
           .filter((movie) => movie.genres?.includes('Comedy'));
 
         this.applyFilter();
+        this.isLoading = false;
       },
       error: (error) => {
         console.error('Erreur lors du chargement des films', error);
+        this.isLoading = false;
       },
     });
   }

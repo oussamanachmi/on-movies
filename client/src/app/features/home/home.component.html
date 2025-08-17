@@ -5,7 +5,16 @@
     </div>
 
     <div class="container mt-5">
+        <!-- Loader -->
+        @if (isLoading) {
+        <div class="d-flex justify-content-center align-items-center" style="height:200px">
+            <div class="spinner-border text-warning" role="status" aria-hidden="true"></div>
+            <span class="ms-3 text-white">Loading movies...</span>
+        </div>
+        }
+
         <!-- Filter Controls -->
+        @if (!isLoading) {
         <div class="d-flex justify-content-between align-items-center mb-5">
             <h2 class="section-title text-white">Films</h2>
             <div class="movies-filter text-white">
@@ -17,8 +26,10 @@
                     (click)="onSelectFilter('upcoming')">Upcoming</span>
             </div>
         </div>
+        }
 
         <!-- Carousel -->
+        @if (!isLoading) {
         <div class="row">
             <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
@@ -49,12 +60,16 @@
             </h5>
             }
         </div>
+        }
 
         <!-- Thriller Movies Section -->
+        @if (!isLoading) {
         <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
             <h2 class="section-title text-white">Comedian Films</h2>
         </div>
+        }
 
+        @if (!isLoading) {
         <div class="row">
             <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [noWrap]="!noWrap"
                 [interval]="0" [startFromIndex]="1" (slideRangeChange)="onSlideRangeChange($event)"
@@ -80,5 +95,6 @@
             </carousel>
 
         </div>
+        }
     </div>
 </section>
