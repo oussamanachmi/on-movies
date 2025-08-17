@@ -1,23 +1,11 @@
-// jest.config.js
 module.exports = {
   preset: 'jest-preset-angular',
-  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
-  moduleFileExtensions: ['ts', 'js', 'html', 'json'],
-
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
   transform: {
-    '^.+\\.(ts|js|html)$': ['ts-jest', {
-      tsconfig: 'tsconfig.spec.json',
-      stringifyContentPathRegex: '\\.html$',
-    }],
+    '^.+\\.ts$': 'ts-jest', // Only transform .ts files
   },
-
-  // Si tu n’as pas besoin de mapper les paths du tsconfig, supprime moduleNameMapper
-  // moduleNameMapper: {},
-
-  transformIgnorePatterns: ['node_modules/(?!@ngrx|ngx-socket-io)'],
-
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['html', 'lcov', 'text-summary'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!flat)/', // Exclude modules except 'flat' from transformation
+  ],
 };
